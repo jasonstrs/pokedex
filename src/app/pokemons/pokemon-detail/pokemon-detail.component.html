@@ -1,3 +1,35 @@
-<ng-container *ngIf="pokemon">
-  <p>{{ pokemon.name }}</p>
-</ng-container>
+<mat-card *ngIf="pokemon">
+  <audio autoplay="autoplay">
+    <source src="/assets/audio/{{ pokemon.id }}.mp3">
+  </audio>
+  <mat-grid-list cols="2" rowHeight="320px">
+    <mat-grid-tile>
+        <div class="flex flex-d-column flex-v-center">
+          <img
+            alt="{{ pokemon.name }}"
+            height="300px"
+            src="/assets/img/sprites/{{ pokemon.id }}.png"
+          >
+          <p>No. {{ pokemon.id | number: '3.0' }}</p>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="flex flex-d-column">
+        <p>
+          {{ pokemon.name }}
+          <button mat-icon-button (click)="jouerSon()">
+            <mat-icon class="icon">play_circle_outline</mat-icon>
+          </button>
+        </p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let type of pokemon.types">{{ type }}</mat-chip>
+        </mat-chip-list>
+        <p>Taille: {{ pokemon.height | number: '1.1-1' }} m</p>
+        <p>Poids: {{ pokemon.weight | number: '1.1-1' }} kg</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      {{ pokemon.description }}
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

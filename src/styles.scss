@@ -10,3 +10,8 @@ body {
 h1 { color: whitesmoke; }
 
 p { color: white; }
+
+.flex { display: flex; }
+.flex-d-column { flex-direction: column; }
+.flex-h-center { justify-content: center; }
+.flex-v-center { align-items: center; }
