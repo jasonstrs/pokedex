@@ -1,4 +1,8 @@
 <mat-card *ngIf="pokemon">
+  <button mat-icon-button (click)="goBack();">
+    <mat-icon>arrow_back</mat-icon>
+    Retour aux Pokémons
+  </button>
   <audio autoplay="autoplay">
     <source src="/assets/audio/{{ pokemon.id }}.mp3">
   </audio>
@@ -17,7 +21,7 @@
       <div class="flex flex-d-column">
         <p>
           {{ pokemon.name }}
-          <button mat-icon-button (click)="jouerSon()">
+          <button mat-icon-button (click)="jouerSon();">
             <mat-icon class="icon">play_circle_outline</mat-icon>
           </button>
         </p>

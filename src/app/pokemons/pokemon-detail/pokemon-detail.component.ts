@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonDetail } from '../models/pokemon-detail.model';
 import { PokemonService } from '../services/pokemon.service';
 
@@ -11,7 +11,7 @@ import { PokemonService } from '../services/pokemon.service';
 export class PokemonDetailComponent implements OnInit {
   pokemon?: PokemonDetail;
 
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
+  constructor(private route: ActivatedRoute, private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemon()
@@ -24,6 +24,10 @@ export class PokemonDetailComponent implements OnInit {
 
   jouerSon(): void {
     new Audio(`/assets/audio/${this.pokemon?.id}.mp3`).play();
+  }
+
+  goBack() : void {
+    this.router.navigate(['/pokemons']);
   }
 
 }

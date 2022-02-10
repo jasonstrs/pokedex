@@ -9,6 +9,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PokemonRoutingModule } from './pokement-routing.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PokemonRoutingModule } from './pokement-routing.module';
     MatButtonModule,
     MatChipsModule,
     MatIconModule,
-    PokemonRoutingModule
+    PokemonRoutingModule,
+    InfiniteScrollModule,
   ]
 })
 export class PokemonsModule { }

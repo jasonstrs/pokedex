@@ -18,6 +18,9 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService.getPokemons().subscribe(({ data }) => this.pokemons = data)
   }
 
+  onScroll(): void {
+    console.log('scrolled!!');
+  }
 
 
 }

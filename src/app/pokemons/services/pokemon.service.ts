@@ -15,7 +15,7 @@ export class PokemonService {
   constructor(private messageService : MessageService, private http: HttpClient) { }
 
   getPokemons(): Observable<any> {
-    return this.http.get<any>(this.pokemonsUrl).pipe(
+    return this.http.get<any>(`${this.pokemonsUrl}?limit=151`).pipe(
       tap(() => this.log("fetched Pokemons")),
       catchError(this.handleError<any>('getPokemons', [])),
     );
