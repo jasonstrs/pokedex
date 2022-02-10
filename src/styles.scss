@@ -7,11 +7,25 @@ body {
   background-color: black;
 }
 
-h1 { color: whitesmoke; }
+h1 {
+  color: whitesmoke;
+}
 
 p { color: white; }
+
+button { color: white; }
 
 .flex { display: flex; }
 .flex-d-column { flex-direction: column; }
 .flex-h-center { justify-content: center; }
 .flex-v-center { align-items: center; }
+
+.mat-icon-button .mat-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.mr-4 { margin-right: 4px; }
+.ml-4 { margin-left: 4px; }
+.mb-12 { margin-bottom: 12px; }
+.mt-16 { margin-top: 16px; }
