@@ -15,8 +15,8 @@ export class PokemonService {
 
   constructor(private messageService : MessageService, private http: HttpClient) { }
 
-  getPokemons(): Observable<PagedData<Pokemon>> {
-    return this.http.get<PagedData<Pokemon>>(this.pokemonsUrl).pipe(
+  getPokemons(queryParam: string = ''): Observable<PagedData<Pokemon>> {
+    return this.http.get<PagedData<Pokemon>>(`${this.pokemonsUrl}${queryParam}`).pipe(
       tap(() => this.log("fetched Pokemons")),
       catchError(this.handleError<PagedData<Pokemon>>('getPokemons', undefined)),
     );

@@ -9,18 +9,24 @@ import { PokemonService } from '../services/pokemon.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons?: Pokemon[];
+  offset: number = 0;
+  pokemons: Pokemon[] = [];
 
   constructor(private pokemonService: PokemonService) { }
 
 
   ngOnInit(): void {
-    this.pokemonService.getPokemons().subscribe(({ data }) => this.pokemons = data)
+    this.pokemonService.getPokemons().subscribe(({ data, limit }) => {
+      this.pokemons = data;
+      this.offset += limit;
+    })
   }
 
   onScroll(): void {
-    console.log('scrolled!!');
+    if (this.offset == 0) return;
+    this.pokemonService.getPokemons(`?offset=${this.offset}`).subscribe(({ data, limit }) => {
+      this.pokemons = [...this.pokemons, ...data]
+      this.offset += limit;
+    })
   }
-
-
 }

@@ -4,16 +4,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: black;
 }
-
-h1 {
-  color: whitesmoke;
-}
-
-p { color: white; }
-
-button { color: white; }
 
 .flex { display: flex; }
 .flex-d-column { flex-direction: column; }
