@@ -22,12 +22,7 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonService.getPokemon(id).subscribe(pokemon => this.pokemon = pokemon)
   }
 
-  jouerSon(): void {
-    new Audio(`/assets/audio/${this.pokemon?.id}.mp3`).play();
-  }
-
   goBack() : void {
     this.router.navigate(['/pokemons']);
   }
-
 }

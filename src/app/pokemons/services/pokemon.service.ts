@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
+import { PagedData } from '../models/paged-data.model';
 import { PokemonDetail } from '../models/pokemon-detail.model';
 import { Pokemon } from '../models/pokemon.model';
 
@@ -14,10 +15,10 @@ export class PokemonService {
 
   constructor(private messageService : MessageService, private http: HttpClient) { }
 
-  getPokemons(): Observable<any> {
-    return this.http.get<any>(`${this.pokemonsUrl}?limit=151`).pipe(
+  getPokemons(): Observable<PagedData<Pokemon>> {
+    return this.http.get<PagedData<Pokemon>>(this.pokemonsUrl).pipe(
       tap(() => this.log("fetched Pokemons")),
-      catchError(this.handleError<any>('getPokemons', [])),
+      catchError(this.handleError<PagedData<Pokemon>>('getPokemons', undefined)),
     );
   }
 
