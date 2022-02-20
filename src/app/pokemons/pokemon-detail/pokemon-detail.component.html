@@ -1,3 +1,6 @@
+<div class="container-logo">
+  <img class="logo-image" src="/assets/img/official-artwork/logo.svg.png">
+</div>
 <mat-card *ngIf="pokemon">
   <div class="flex flex-h-center">
     <mat-grid-list cols="2" rowHeight="50px" class="list">
@@ -15,11 +18,8 @@
         <div class="flex flex-d-column">
           <p class="flex flex-v-center">
             {{ pokemon.name }}
-            <button mat-icon-button (click)="audio.play();">
+            <button mat-icon-button (click)="playSound(pokemon.id)">
               <mat-icon class="ml-4">play_circle_outline</mat-icon>
-              <audio #audio autoplay="autoplay">
-                <source src="/assets/audio/{{ pokemon.id }}.mp3">
-              </audio>
             </button>
           </p>
           <mat-chip-list class="mb-12">

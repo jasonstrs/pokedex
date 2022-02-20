@@ -12,13 +12,14 @@ import { PokemonRoutingModule } from './pokement-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PokedexComponent } from './pokedex/pokedex.component';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
   declarations: [
     PokemonListComponent,
     PokemonDetailComponent,
-    PokedexComponent
+    PokedexComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import { PokedexComponent } from './pokedex/pokedex.component';
     PokemonRoutingModule,
     InfiniteScrollModule,
     MatSidenavModule,
+    MatInputModule
   ]
 })
 export class PokemonsModule { }

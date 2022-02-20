@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
@@ -15,8 +15,14 @@ export class PokemonService {
 
   constructor(private messageService : MessageService, private http: HttpClient) { }
 
-  getPokemons(queryParam: string = ''): Observable<PagedData<Pokemon>> {
-    return this.http.get<PagedData<Pokemon>>(`${this.pokemonsUrl}${queryParam}`).pipe(
+  getPokemons(limit: number, offset: number, searchValue: string = ""): Observable<PagedData<Pokemon>> {
+    let queryParams = [
+      `offset=${offset}`,
+      `limit=${limit}`
+    ];
+    if (Boolean(searchValue)) queryParams.push(`search=${searchValue}`);
+
+    return this.http.get<PagedData<Pokemon>>(`${this.pokemonsUrl}?${queryParams.join('&')}`).pipe(
       tap(() => this.log("fetched Pokemons")),
       catchError(this.handleError<PagedData<Pokemon>>('getPokemons', undefined)),
     );

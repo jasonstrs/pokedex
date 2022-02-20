@@ -10,7 +10,10 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class PokemonDetailComponent implements OnInit {
   @Input() set setId(id: number | undefined) {
-    if (id) this.getPokemon(id);
+    if (id) {
+      this.getPokemon(id);
+      this.playSound(id);
+    }
   }
   pokemon?: PokemonDetail;
 
@@ -23,7 +26,7 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonService.getPokemon(idPokemon).subscribe(pokemon => this.pokemon = pokemon)
   }
 
-  goBack() : void {
-    this.router.navigate(['/pokemons']);
+  playSound(id: number): void {
+    new Audio(`/assets/audio/${id}.mp3`).play();
   }
 }
