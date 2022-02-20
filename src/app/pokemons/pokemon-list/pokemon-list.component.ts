@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { debounceTime, distinctUntilChanged, BehaviorSubject, switchMap } from 'rxjs';
 import { Pokemon } from '../models/pokemon.model';
 import { PokemonService } from '../services/pokemon.service';
 
@@ -9,24 +10,48 @@ import { PokemonService } from '../services/pokemon.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  @Output() pokemonEvent = new EventEmitter<Pokemon>();
+  private searchTerms = new BehaviorSubject<string>("");
   offset: number = 0;
+  limit: number = 20;
   pokemons: Pokemon[] = [];
 
   constructor(private pokemonService: PokemonService) { }
 
 
   ngOnInit(): void {
-    this.pokemonService.getPokemons().subscribe(({ data, limit }) => {
-      this.pokemons = data;
-      this.offset += limit;
-    })
+    this.getPokemons();
+    this.initSearchPokemon();
   }
 
   onScroll(): void {
     if (this.offset == 0) return;
-    this.pokemonService.getPokemons(`?offset=${this.offset}`).subscribe(({ data, limit }) => {
+    this.getPokemons();
+  }
+
+  addPokemon(pokemon: Pokemon) {
+    this.pokemonEvent.emit(pokemon);
+  }
+
+  initSearchPokemon() : void {
+    this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((term: string) => this.pokemonService.getPokemons(this.limit, 0, term)),
+    ).subscribe(({ data }) => {
+      this.pokemons = data;
+      this.offset = this.limit;
+    });
+  }
+
+  searchPokemons(value: string) {
+    this.searchTerms.next(value);
+  }
+
+  getPokemons(): void {
+    this.pokemonService.getPokemons(this.limit, this.offset, this.searchTerms.getValue()).subscribe(({ data }) => {
       this.pokemons = [...this.pokemons, ...data]
-      this.offset += limit;
-    })
+      this.offset += this.limit;
+    });
   }
 }
