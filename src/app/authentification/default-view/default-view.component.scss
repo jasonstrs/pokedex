@@ -1,0 +1,26 @@
+.default-view-container {
+  height: calc(100vh - 100px);
+}
+
+.ripple {
+  height: 350px;
+  width: 350px;
+  color: black;
+  font-size: 32px;
+  background-color: #69F0AE;
+  border-radius: 10px;
+}
+
+.ripple:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.ripple:first-child {
+  margin-right: 96px;
+}
+
+.ripple:last-child {
+  margin-left: 96px;
+}
+

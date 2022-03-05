@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; overflow: hidden; }
+html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -10,6 +10,7 @@ body {
 .flex-d-column { flex-direction: column; }
 .flex-h-center { justify-content: center; }
 .flex-v-center { align-items: center; }
+.flex-h-end { justify-content: flex-end; }
 
 .mat-icon-button .mat-button-wrapper {
   display: flex;
@@ -19,4 +20,7 @@ body {
 .mr-4 { margin-right: 4px; }
 .ml-4 { margin-left: 4px; }
 .mb-12 { margin-bottom: 12px; }
+.mt-8 { margin-top: 8px; }
 .mt-16 { margin-top: 16px; }
+
+.pr-16 { padding-right: 16px; }

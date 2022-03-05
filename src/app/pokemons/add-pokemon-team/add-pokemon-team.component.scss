@@ -1,0 +1,16 @@
+.container-add-pokemon {
+  min-width: 300px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-add-pokemon:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.content-add-pokemon {
+  font-size: 10rem;
+}

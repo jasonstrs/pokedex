@@ -1,0 +1,20 @@
+<div class="flex flex-h-end mt-16 pr-16">
+  <button mat-stroked-button color="warn" (click)="logout()">Logout</button>
+</div>
+<div class="container-team">
+  <app-view-detail-team
+    *ngFor="let pokemon of pokemons"
+    [pokemon]="pokemon"
+    class="flex mb-12"
+    (pokemonEvent)="removePokemon($event)"
+  >
+  </app-view-detail-team>
+  <app-add-pokemon-team
+    *ngIf="pokemons.length < 6"
+    (pokemonEvent)="addPokemon($event)"
+    class="flex"
+    [selectedPokemons]="pokemons"
+  >
+  </app-add-pokemon-team>
+</div>
+

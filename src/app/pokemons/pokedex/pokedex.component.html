@@ -3,6 +3,6 @@
     <app-pokemon-list (pokemonEvent)="loadPokemon($event)" ></app-pokemon-list>
   </mat-drawer>
   <mat-drawer-content>
-    <app-pokemon-detail [setId]="id"></app-pokemon-detail>
+    <app-pokemon-detail [id]="id"></app-pokemon-detail>
   </mat-drawer-content>
 </mat-drawer-container>

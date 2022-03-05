@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Select your pokemon</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field class="" appearance="fill" class="search-add-pokemon">
+    <mat-label>Pokemon</mat-label>
+    <input type="text"
+            placeholder="Pick one"
+            aria-label="Pokemon"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="updateSelected($event)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name" id="{{option.id}}">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="id" cdkFocusInitial [disabled]="!id">Add</button>
+</mat-dialog-actions>

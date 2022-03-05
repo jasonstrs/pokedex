@@ -1,1 +1,17 @@
+<nav mat-tab-nav-bar mat-stretch-tabs>
+  <a
+    mat-tab-link
+    [routerLink]="'/pokemons'"
+    [active]="router.url === '/pokemons'"
+  >
+    View Pokemons
+  </a>
+  <a
+    mat-tab-link
+    [routerLink]="'/default-auth'"
+    [active]="manageTeamRoutes.includes(router.url)"
+  >
+    Manage my team
+  </a>
+</nav>
 <router-outlet></router-outlet>
