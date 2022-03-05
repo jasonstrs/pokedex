@@ -1,0 +1,37 @@
+<div class="flex flex-v-center flex-h-center container-connexion">
+  <form (submit)="submit()" #connexionForm class="flex flex-d-column">
+    <mat-form-field appearance="fill" style="width:40vw">
+      <mat-label>Enter your email</mat-label>
+      <input matInput type="email" required [(ngModel)]="email" name="email" >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width:40vw">
+      <mat-label>Enter your password (6 caracters mini.)</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" minlength="6" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!connexionForm.checkValidity()"
+    >
+      Connexion
+    </button>
+    <p *ngIf="error">{{error}}</p>
+    <div style="margin-top: 18px;">
+      <a routerLink="/default-auth">
+        <button
+          mat-raised-button
+          color="warn"
+          class="bouton-back-homepage"
+        >
+          Back to homepage
+        </button>
+      </a>
+    </div>
+  </form>
+</div>

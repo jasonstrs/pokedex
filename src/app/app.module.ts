@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonsModule } from './pokemons/pokemons.module';
+import { AuthentificationModule } from './authentification/authentification.module';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { PokemonsModule } from './pokemons/pokemons.module';
     BrowserAnimationsModule,
     PokemonsModule,
     HttpClientModule,
+    MatTabsModule,
+    AuthentificationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

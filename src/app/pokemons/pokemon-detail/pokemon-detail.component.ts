@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokemonDetail } from '../models/pokemon-detail.model';
 import { PokemonService } from '../services/pokemon.service';
 
@@ -9,17 +9,19 @@ import { PokemonService } from '../services/pokemon.service';
   styleUrls: ['./pokemon-detail.component.scss']
 })
 export class PokemonDetailComponent implements OnInit {
-  @Input() set setId(id: number | undefined) {
-    if (id) {
-      this.getPokemon(id);
-      this.playSound(id);
-    }
-  }
+  @Input() id?: number;
   pokemon?: PokemonDetail;
 
-  constructor(private pokemonService: PokemonService, private router: Router) { }
+  constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    if (this.id) {
+      this.getPokemon(this.id)
+      this.playSound(this.id)
+    }
   }
 
   getPokemon(idPokemon: number) {
