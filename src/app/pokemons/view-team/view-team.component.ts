@@ -25,8 +25,8 @@ export class ViewTeamComponent implements OnInit {
     });
   }
 
-  removePokemon(id: number): void {
-    this.pokemons = this.pokemons.filter((pokemon) => pokemon.id != id);
+  removePokemon(index: number): void {
+    this.pokemons.splice(index, 1);
     this.pokemonService.setTeam(this.pokemons.map((pok) => pok.id)).subscribe();
   }
 

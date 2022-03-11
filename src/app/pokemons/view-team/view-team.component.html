@@ -3,16 +3,16 @@
 </div>
 <div class="container-team">
   <app-view-detail-team
-    *ngFor="let pokemon of pokemons"
+    *ngFor="let pokemon of pokemons; let index = index;"
     [pokemon]="pokemon"
     class="flex mb-12"
-    (pokemonEvent)="removePokemon($event)"
+    (pokemonEvent)="removePokemon(index)"
   >
   </app-view-detail-team>
   <app-add-pokemon-team
     *ngIf="pokemons.length < 6"
     (pokemonEvent)="addPokemon($event)"
-    class="flex"
+    class="flex mb-12"
   >
   </app-add-pokemon-team>
 </div>

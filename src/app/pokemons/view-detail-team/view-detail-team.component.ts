@@ -17,7 +17,6 @@ export class ViewDetailTeamComponent implements OnInit {
 
   onDelete(): void {
     if (this.pokemon)
-      this.pokemonEvent.emit(this.pokemon.id);
+      this.pokemonEvent.emit();
   }
-
 }
