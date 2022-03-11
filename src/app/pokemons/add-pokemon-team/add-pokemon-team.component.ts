@@ -9,7 +9,6 @@ import { PokemonDetail } from '../models/pokemon-detail.model';
   styleUrls: ['./add-pokemon-team.component.scss']
 })
 export class AddPokemonTeamComponent implements OnInit {
-  @Input() selectedPokemons: PokemonDetail[] = []
   @Output() pokemonEvent = new EventEmitter<number>();
 
   constructor(private dialog: MatDialog) { }
@@ -19,8 +18,7 @@ export class AddPokemonTeamComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddPokemonDialogComponent, {
-      width: '50vw',
-      data: this.selectedPokemons.map(pok => pok.id)
+      width: '50vw'
     });
 
     dialogRef.afterClosed().subscribe(id => {
