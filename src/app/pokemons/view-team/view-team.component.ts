@@ -31,8 +31,13 @@ export class ViewTeamComponent implements OnInit {
   }
 
   addPokemon(id: number): void {
+    this.playSound(id);
     this.pokemonService.getPokemon(id).subscribe(pok => this.pokemons = [...this.pokemons, pok])
     this.pokemonService.setTeam([...this.pokemons.map(pok => pok.id), +id]).subscribe()
+  }
+
+  playSound(id: number): void {
+    new Audio(`/assets/audio/${id}.mp3`).play();
   }
 
   logout(): void {
