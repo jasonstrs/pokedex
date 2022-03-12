@@ -24,7 +24,7 @@ export class InscriptionComponent implements OnInit {
         this.error = data.error.message
         return;
       }
-      this.authService.setAccessToken(data.access_token)
+      this.authService.setAccessToken(data.idToken)
       this.router.navigate(['/view-team'])
     })
   }

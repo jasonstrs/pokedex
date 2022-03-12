@@ -12,6 +12,11 @@
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="/assets/img/official-artwork/{{pokemon.id}}.png" alt="{{pokemon.name}}">
+    <div class="flex flex-h-sb">
+      <p class="bold">No. {{ pokemon.id | number: '3.0' }}</p>
+      <p class="bold">Taille: {{ pokemon.height | number: '1.1-1' }} m</p>
+      <p class="bold">Poids: {{ pokemon.weight | number: '1.1-1' }} kg</p>
+    </div>
     <mat-card-content>
       <p>{{pokemon.description}}</p>
     </mat-card-content>
