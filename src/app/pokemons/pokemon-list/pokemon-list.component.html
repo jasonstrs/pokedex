@@ -11,12 +11,12 @@
   </button>
 </mat-form-field>
 <mat-nav-list
-  class="scroll-container"
+  [ngClass]="isDialog ? 'scroll-container-dialog' : 'scroll-container'"
   infiniteScroll
   (scrolled)="onScroll()"
   [scrollWindow]="false"
 >
-  <mat-list-item (click)="addPokemon(pokemon)" class="list-item" *ngFor="let pokemon of pokemons">
+  <mat-list-item (click)="addPokemon(pokemon)" [ngClass]="{'list-item-selected': selectedId === pokemon.id}" class="list-item" *ngFor="let pokemon of pokemons">
     <img matListAvatar src="/assets/img/sprites/{{ pokemon.id }}.png" alt="{{ pokemon.name }}">
     <p matLine>{{pokemon.id}}. {{pokemon.name}}</p>
   </mat-list-item>

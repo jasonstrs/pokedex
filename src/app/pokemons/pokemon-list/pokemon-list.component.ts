@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
 import { debounceTime, distinctUntilChanged, BehaviorSubject, switchMap } from 'rxjs';
 import { Pokemon } from '../models/pokemon.model';
 import { PokemonService } from '../services/pokemon.service';
@@ -10,17 +10,18 @@ import { PokemonService } from '../services/pokemon.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  @Input() isDialog: boolean = false;
   @Output() pokemonEvent = new EventEmitter<Pokemon>();
   private searchTerms = new BehaviorSubject<string>("");
   offset: number = 0;
   limit: number = 20;
   pokemons: Pokemon[] = [];
+  selectedId?: number;
 
   constructor(private pokemonService: PokemonService) { }
 
 
   ngOnInit(): void {
-    this.getPokemons();
     this.initSearchPokemon();
   }
 
@@ -31,6 +32,7 @@ export class PokemonListComponent implements OnInit {
 
   addPokemon(pokemon: Pokemon) {
     this.pokemonEvent.emit(pokemon);
+    this.selectedId = pokemon.id;
   }
 
   initSearchPokemon() : void {

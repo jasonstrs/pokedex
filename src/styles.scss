@@ -11,6 +11,7 @@ body {
 .flex-h-center { justify-content: center; }
 .flex-v-center { align-items: center; }
 .flex-h-end { justify-content: flex-end; }
+.flex-h-sb { justify-content: space-between; }
 
 .mat-icon-button .mat-button-wrapper {
   display: flex;
@@ -24,3 +25,5 @@ body {
 .mt-16 { margin-top: 16px; }
 
 .pr-16 { padding-right: 16px; }
+
+.bold { font-weight: bold; }
